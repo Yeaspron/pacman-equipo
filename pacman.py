@@ -15,6 +15,7 @@ from turtle import *
 from freegames import floor, vector
 
 GHOST_SPEED = 10
+GHOST_COLORS = ['red', 'pink', 'cyan', 'orange']
 
 state = {'score': 0}
 path = Turtle(visible=False)
@@ -138,7 +139,7 @@ def move():
     goto(pacman.x + 10, pacman.y + 10)
     dot(20, 'yellow')
 
-    for point, course in ghosts:
+    for index, (point, course) in enumerate(ghosts):
         if valid(point + course):
             point.move(course)
         else:
@@ -154,7 +155,7 @@ def move():
 
         up()
         goto(point.x + 10, point.y + 10)
-        dot(20, 'red')
+        dot(20, GHOST_COLORS[index])
 
     update()
 
