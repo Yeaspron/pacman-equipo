@@ -9,7 +9,6 @@ Exercises
 5. Make the ghosts smarter.
 """
 
-from random import choice
 from turtle import *
 
 from freegames import floor, vector
@@ -116,6 +115,40 @@ def world():
                 path.dot(2, 'white')
 
 
+def choose_direction(point, course):
+    """Selecciona una dirección valida que acerque el fantasma a Pacman.
+
+    Args:
+        point: Vector con la posicion actual del fantasma.
+        course: Vector de dirección que se modifica.
+
+    Las deciciones se toman al alinearse con una casilla. 
+    Entre casillas se conserva la dirección anterior."""
+
+    if point.x % 20 != 0 or point.y % 20 != 0:
+        return
+
+    directions = [
+        vector(GHOST_SPEED, 0),
+	vector(-GHOST_SPEED, 0),
+        vector(0, GHOST_SPEED),
+	vector(0, -GHOST_SPEED),
+    ]
+    options = []
+   
+    for direction in directions:
+        if valid(point + direction):
+            options.append(direction)
+    if not options:
+        return
+
+    best = min(
+        options,
+        key=lambda direction: abs(pacman - (point + direction)),
+    )
+    course.x = best.x
+    course.y = best.y
+
 def move():
     """Move pacman and all ghosts."""
     writer.undo()
@@ -140,18 +173,9 @@ def move():
     dot(20, 'yellow')
 
     for index, (point, course) in enumerate(ghosts):
+        choose_direction(point, course)
         if valid(point + course):
             point.move(course)
-        else:
-            options = [
-                vector(GHOST_SPEED, 0),
-                vector(-GHOST_SPEED, 0),
-                vector(0, GHOST_SPEED),
-                vector(0, -GHOST_SPEED),
-            ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
 
         up()
         goto(point.x + 10, point.y + 10)
