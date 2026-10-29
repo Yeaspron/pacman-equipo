@@ -52,6 +52,12 @@ tiles = [
 ]
 # fmt: on
 
+# Cambios (abre 4 caminos adicionales)
+
+tiles [4 *20 + 3] = 1
+tiles [6 *20 + 3] = 1
+tiles [12 *20 + 3] = 1
+tiles [14 *20 + 3] = 1
 
 def square(x, y):
     """Draw square using path at (x, y)."""
