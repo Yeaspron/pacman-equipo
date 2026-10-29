@@ -111,7 +111,7 @@ que conserve los commits individuales y sus autores.
 
 | Funcionalidad | Estado |
 |---|---|
-| Fantasmas inteligentes | Pendiente |
+| Fantasmas inteligentes | Implementado |
 | Nuevo tablero | Pendiente |
 | Fantasmas más rápidos | Pendiente |
 
@@ -154,3 +154,17 @@ Para exportar los commits de la versión integrada:
 git log main --date=iso --pretty=fuller > historial_commits.txt
 ```
 
+## Implementación de Diego: fantasmas inteligentes
+
+Se añadió `choose_direction(point, course)` para revisar las
+cuatro direcciones al alinearse el fantasma con una casilla.
+
+Se descartan movimientos bloqueados y se elige el destino más
+cercano a la posición actual de Pacman. Entre casillas, el fantasma
+mantiene su dirección.
+
+La función utiliza `GHOST_SPEED`, por lo que puede integrarse
+con el cambio de velocidad sin fijar el desplazamiento en 5.
+
+La estrategia busca acercarse a Pacman, pero no garantiza
+encontrar la ruta más corta alrededor de las paredes.
