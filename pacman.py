@@ -14,7 +14,7 @@ from turtle import *
 
 from freegames import floor, vector
 
-GHOST_SPEED = 5
+GHOST_SPEED = 10
 
 state = {'score': 0}
 path = Turtle(visible=False)
