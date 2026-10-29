@@ -1,36 +1,156 @@
-Modificacion de Pacman.py
-Master: Diego Lemus Mejía, A01665486
-Usuario de Git: a01665486-debug
-Fork: Yerik Escobar Asprón, A01829079
-Usuario de Git: Yeaspron
+# Pacman - Proyecto colaborativo
 
-Este repositorio contiene una adaptación del videojuego Pacman de Free Python Games, desarrollado en Python con Turtle. El objetivo es mejorar el comportamiento de los fantasmas, modificar el tablero y aumentar la velocidad de los fantasmas mediante trabajo colaborativo con Git y GitHub.
-Fuente original: Pacman de Grant Jenks.
+## Descripción
 
-Reparto de funcionalidades:
+Adaptación del videojuego Pacman de Free Python Games, desarrollado
+en Python con Turtle Graphics.
 
-Diego:  fantasmas más inteligentes(pendiente)
-	feat/fantasmas-inteligentes(pendiente)	
-	feat: orienta fantasmas hacia Pacman en los cruces(pendiente)
-Yerik:  Modificar el tablero(pendiente
-	feat/tableo	feat: modifica distribucion del tablero
-Yerik	Aumentar la velocidad de los fantasmas	feat/velocidad-fantasmas	feat: aumenta velocidad de fantasmas con dos subpasos:
-El código inicial se obtiene con python -m freegames copy pacman y se conserva en el primer commit, antes de realizar modificaciones.
+El objetivo es mejorar las decisiones de los fantasmas, modificar
+la distribución del tablero y aumentar la velocidad de los fantasmas,
+utilizando Git y GitHub para registrar las contribuciones del equipo.
 
-Requisitos
-- Python 3, Git y una cuenta de GitHub.
-- Turtle y Tkinter disponibles en la instalación de Python.
-- En Windows: Ubuntu en WSL 2 con soporte para aplicaciones gráficas.
+## Fuente original
 
-git clone https://github.com/a01665486-debug/pacman-equipo.git
-cd pacman-equipo
+Autor del código base: Grant Jenks.
+
+https://grantjenks.com/docs/freegames/pacman.html
+
+El archivo original se obtuvo con:
+
+```bash
+python -m freegames copy pacman
+```
+
+El primer commit conserva el código sin modificaciones.
+
+## Integrantes
+
+| Integrante | Matrícula | GitHub | Rol |
+|---|---|---|---|
+| Diego Lemus Mejía | A01665486 | a01665486-debug | Dueño / Main |
+| Yerik Escobar Asprón | Por completar | Por completar | Fork |
+
+Cada integrante utiliza su propia cuenta. Yerik contribuye desde
+un fork, sin acceso de colaborador al repositorio original.
+
+## Instalación
+
+Se requiere Python 3 con soporte para Turtle y Tkinter.
+
+Después de descargar el repositorio, entrar a su carpeta y ejecutar:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+Cada integrante crea su propio ambiente virtual. La carpeta `.venv/`
+no se sube al repositorio.
+
+## Ejecución
+
+Con el ambiente activado:
+
+```bash
 python pacman.py
+```
 
-Controles:
+Para otra sesión, entrar a la carpeta del proyecto y activar:
 
-   |Tecla|             	           |Acción|
-Flecha derecha  	Mover a Pacman hacia la derecha
-Flecha izquierda	Mover a Pacman hacia la izquierda
-Flecha arriba   	Mover a Pacman hacia arriba
-Flecha abajo	        Mover a Pacman hacia abajo
+```bash
+source .venv/bin/activate
+```
+
+Para salir del ambiente:
+
+```bash
+deactivate
+```
+
+## Controles
+
+| Tecla | Acción |
+|---|---|
+| Flecha arriba | Subir |
+| Flecha abajo | Bajar |
+| Flecha izquierda | Moverse a la izquierda |
+| Flecha derecha | Moverse a la derecha |
+
+Se debe recoger comida y evitar a los fantasmas. La partida
+se detiene cuando un fantasma alcanza a Pacman.
+
+Para reiniciar, cerrar la ventana y ejecutar nuevamente el programa.
+
+## Reparto y plan de trabajo
+
+| Responsable | Funcionalidad | Rama |
+|---|---|---|
+| Diego | Mejorar las decisiones de los fantasmas | feat/fantasmas-inteligentes |
+| Yerik | Cambiar el tablero | Rama propia en su fork |
+| Yerik | Aumentar la velocidad de los fantasmas | Rama propia en su fork |
+
+Ambos trabajan simultáneamente desde una base común.
+Cada funcionalidad se registra en un commit separado, se documenta
+y se propone mediante un pull request hacia `main`.
+
+Los cambios se revisan antes de integrarse. Se utiliza un merge
+que conserve los commits individuales y sus autores.
+
+## Acuerdos para integrar el código
+
+- La velocidad de los fantasmas se configura mediante `GHOST_SPEED`.
+- Diego implementa la función que selecciona sus direcciones.
+- Yerik modifica el tablero y configura la velocidad.
+- Pacman conserva su desplazamiento original de 5 unidades.
+- El tablero debe conservar 400 elementos y sus bordes cerrados.
+- Las posiciones iniciales deben estar sobre caminos.
+- Después del merge se prueban las tres funcionalidades juntas.
+
+## Estado de las funcionalidades
+
+| Funcionalidad | Estado |
+|---|---|
+| Fantasmas inteligentes | Pendiente |
+| Nuevo tablero | Pendiente |
+| Fantasmas más rápidos | Pendiente |
+
+## Pruebas
+
+| Prueba | Resultado esperado | Resultado observado |
+|---|---|---|
+| Inicio | El juego abre sin errores | Pendiente |
+| Controles | Pacman responde a las flechas | Pendiente |
+| Puntuación | Aumenta al recoger comida | Pendiente |
+| Inteligencia | Los fantasmas consideran la posición de Pacman | Pendiente |
+| Paredes | Los personajes permanecen en caminos válidos | Pendiente |
+| Tablero | Caminos conectados y comida accesible | Pendiente |
+| Velocidad | Los fantasmas avanzan más rápido que antes | Pendiente |
+| Colisión | La partida se detiene al alcanzar a Pacman | Pendiente |
+
+Los resultados se actualizarán después de realizar cada prueba.
+
+## Problemas encontrados
+
+Pendiente de documentar durante el desarrollo.
+
+Cada problema registrado incluirá el síntoma, la solución aplicada
+y la prueba utilizada para comprobar la corrección.
+
+## Evidencias
+
+La entrega incluye el código final, el historial de commits y
+las evidencias de pull requests y merges en GitHub.
+
+Para consultar el historial:
+
+```bash
+git --no-pager log --graph --oneline --all
+```
+
+Para exportar los commits de la versión integrada:
+
+```bash
+git log main --date=iso --pretty=fuller > historial_commits.txt
+```
 
